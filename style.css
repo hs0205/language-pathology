@@ -1,11 +1,11 @@
 body {
     font-family: sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
+    padding: 2rem; /* Add some padding */
 }
 
 #quiz-container {
@@ -67,4 +67,57 @@ button:hover {
 #result {
     margin-top: 1rem;
     font-weight: bold;
+}
+
+/* Contact Form Styles */
+#contact-form-container {
+    display: none; /* Initially hidden */
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+    margin-top: 2rem; /* Add some space between quiz and form */
+}
+
+#contact-form-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#contact-form-container .form-group {
+    margin-bottom: 1rem;
+}
+
+#contact-form-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+#contact-form-container input[type="text"],
+#contact-form-container input[type="email"],
+#contact-form-container textarea {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#contact-form-container textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+#contact-form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; /* Green color for submit */
+}
+
+#contact-form-container button[type="submit"]:hover {
+    background-color: #218838;
 }

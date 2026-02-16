@@ -30,6 +30,7 @@ const questionEl = document.getElementById('question');
 const optionsContainer = document.getElementById('options-container');
 const nextBtn = document.getElementById('next-btn');
 const resultEl = document.getElementById('result');
+const contactForm = document.getElementById('contact-form-container');
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -84,6 +85,7 @@ nextBtn.addEventListener('click', () => {
         optionsContainer.innerHTML = `총 ${quizData.length} 문제 중 ${score} 문제를 맞혔습니다.`;
         nextBtn.style.display = 'none';
         resultEl.textContent = '';
+        contactForm.style.display = 'block'; // Show the form
     }
 });
 
