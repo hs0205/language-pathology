@@ -3,26 +3,6 @@ const quizData = [
         question: "사과",
         options: ["Apple", "Banana", "Cherry", "Date"],
         answer: "Apple"
-    },
-    {
-        question: "바나나",
-        options: ["Apple", "Banana", "Cherry", "Date"],
-        answer: "Banana"
-    },
-    {
-        question: "의자",
-        options: ["Chair", "Table", "Desk", "Sofa"],
-        answer: "Chair"
-    },
-    {
-        question: "책상",
-        options: ["Chair", "Table", "Desk", "Sofa"],
-        answer: "Desk"
-    },
-    {
-        question: "컴퓨터",
-        options: ["Computer", "Mouse", "Keyboard", "Monitor"],
-        answer: "Computer"
     }
 ];
 
@@ -81,13 +61,18 @@ nextBtn.addEventListener('click', () => {
         loadQuiz();
         Array.from(optionsContainer.children).forEach(btn => btn.disabled = false);
     } else {
+        // Quiz finished
         questionEl.textContent = "퀴즈 끝!";
-        optionsContainer.innerHTML = `총 ${quizData.length} 문제 중 ${score} 문제를 맞혔습니다.<br><br>`; // Add line breaks for spacing
+        optionsContainer.innerHTML = ''; // Clear options container
+        nextBtn.style.display = 'none'; // Hide next button
+
+        // Display score and button in resultEl
+        resultEl.innerHTML = `총 ${quizData.length} 문제 중 ${score} 문제를 맞혔습니다.<br><br>`;
 
         const contactButton = document.createElement('button');
         contactButton.textContent = "제휴문의하기";
         contactButton.classList.add('contact-btn'); // Add a class for styling
-        optionsContainer.appendChild(contactButton);
+        resultEl.appendChild(contactButton); // Append to resultEl
 
         contactButton.addEventListener('click', () => {
             if (contactForm.style.display === 'block') {
@@ -96,10 +81,6 @@ nextBtn.addEventListener('click', () => {
                 contactForm.style.display = 'block';
             }
         });
-
-        nextBtn.style.display = 'none';
-        resultEl.textContent = '';
-        // Removed: contactForm.style.display = 'block'; // Show the form
     }
 });
 
