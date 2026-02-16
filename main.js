@@ -26,7 +26,6 @@ function loadQuiz() {
     currentQuestion.options.forEach(option => {
         const button = document.createElement('button');
         button.textContent = option;
-        button.classList.add('option-btn');
         button.addEventListener('click', () => selectAnswer(button, option));
         optionsContainer.appendChild(button);
     });
@@ -39,48 +38,31 @@ function selectAnswer(button, selectedOption) {
     const currentQuestion = quizData[currentQuestionIndex];
     if (selectedOption === currentQuestion.answer) {
         score++;
-        button.classList.add('correct');
         resultEl.textContent = "정답!";
     } else {
-        button.classList.add('incorrect');
         resultEl.textContent = `오답! 정답은 ${currentQuestion.answer} 입니다.`;
     }
 
-    // Show correct answer
     Array.from(optionsContainer.children).forEach(btn => {
-        if (btn.textContent === currentQuestion.answer) {
-            btn.classList.add('correct');
-        }
         btn.disabled = true;
     });
 }
 
 nextBtn.addEventListener('click', () => {
     currentQuestionIndex++;
+
     if (currentQuestionIndex < quizData.length) {
         loadQuiz();
-        Array.from(optionsContainer.children).forEach(btn => btn.disabled = false);
     } else {
-        // Quiz finished
+        // 퀴즈 종료
         questionEl.textContent = "퀴즈 끝!";
-        optionsContainer.innerHTML = ''; // Clear options container
-        nextBtn.style.display = 'none'; // Hide next button
+        optionsContainer.innerHTML = '';
+        nextBtn.style.display = 'none';
 
-        // Display score and button in resultEl
-        resultEl.innerHTML = `총 ${quizData.length} 문제 중 ${score} 문제를 맞혔습니다.<br><br>`;
+        resultEl.innerHTML = `총 ${quizData.length} 문제 중 ${score} 문제를 맞혔습니다.`;
 
-        const contactButton = document.createElement('button');
-        contactButton.textContent = "제휴문의하기";
-        contactButton.classList.add('contact-btn'); // Add a class for styling
-        resultEl.appendChild(contactButton); // Append to resultEl
-
-        contactButton.addEventListener('click', () => {
-            if (contactForm.style.display === 'block') {
-                contactForm.style.display = 'none';
-            } else {
-                contactForm.style.display = 'block';
-            }
-        });
+        // 🔥 여기서 폼을 강제로 보여줌
+        contactForm.style.display = 'block';
     }
 });
 

@@ -16,28 +16,27 @@
         <button id="next-btn">다음</button>
         <p id="result"></p>
     </div>
-    <script src="main.js"></script>
 
-    <section id="contact-form-container">
+    <!-- 🔥 폼은 기본적으로 숨겨져 있음 -->
+    <section id="contact-form-container" style="display: none;">
         <h2>제휴 문의</h2>
         <form action="https://formspree.io/f/mkovrqok" method="POST">
-            <div class="form-group">
-                <label for="name">이름:</label>
-                <input type="text" id="name" name="name" required>
+            <div>
+                <label>이름:</label>
+                <input type="text" name="name" required>
             </div>
-            <div class="form-group">
-                <label for="email">이메일:</label>
-                <input type="email" id="email" name="_replyto" required>
+            <div>
+                <label>이메일:</label>
+                <input type="email" name="email" required>
             </div>
-            <div class="form-group">
-                <label for="message">메시지:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+            <div>
+                <label>메시지:</label>
+                <textarea name="message" rows="5" required></textarea>
             </div>
             <button type="submit">보내기</button>
         </form>
     </section>
+
+    <script src="main.js"></script>
 </body>
 </html>
-
-
-
