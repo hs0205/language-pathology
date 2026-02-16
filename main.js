@@ -82,10 +82,24 @@ nextBtn.addEventListener('click', () => {
         Array.from(optionsContainer.children).forEach(btn => btn.disabled = false);
     } else {
         questionEl.textContent = "퀴즈 끝!";
-        optionsContainer.innerHTML = `총 ${quizData.length} 문제 중 ${score} 문제를 맞혔습니다.`;
+        optionsContainer.innerHTML = `총 ${quizData.length} 문제 중 ${score} 문제를 맞혔습니다.<br><br>`; // Add line breaks for spacing
+
+        const contactButton = document.createElement('button');
+        contactButton.textContent = "제휴문의하기";
+        contactButton.classList.add('contact-btn'); // Add a class for styling
+        optionsContainer.appendChild(contactButton);
+
+        contactButton.addEventListener('click', () => {
+            if (contactForm.style.display === 'block') {
+                contactForm.style.display = 'none';
+            } else {
+                contactForm.style.display = 'block';
+            }
+        });
+
         nextBtn.style.display = 'none';
         resultEl.textContent = '';
-        contactForm.style.display = 'block'; // Show the form
+        // Removed: contactForm.style.display = 'block'; // Show the form
     }
 });
 
